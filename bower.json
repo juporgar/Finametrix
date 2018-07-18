@@ -1,0 +1,21 @@
+{
+  "name": "finametrix",
+  "description": "Api para finanzas",
+  "main": "",
+  "author": [
+    "Julian Luis Portales garcia"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/juporgar/Finametrix",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "^3.3.1",
+    "bootstrap": "^4.1.2"
+  }
+}

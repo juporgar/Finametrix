@@ -1,17 +1,18 @@
-function getFormat(){
-    console.log("HOLAAA");
-    
-    var a
-    var subir=$("#file");
-    for (var i=0; i < subir.length; i++){
-        var caracter = subir.charAt(i)
-        if( caracter === "."){
-            a= a + caracter;
-            console.log(a)
-        }
-    }
+// function getFormat(e) {
+//     console.log("HOLAAA");
 
-    if(a !== "CSV" || a !== "csv"){
-        return "No es un Archivo de formato CSV"
-    }
-}
+//     var x = []
+//     var subir = $("file");
+
+//     for (var i = 0; i < subir.length; i++) {
+//         var caracter = subir.charAt(i)
+//         if (caracter === ".") {
+//             x = x + caracter;
+//             console.log(x)
+//         }
+//     }
+
+//     if (x !== "CSV" || x !== "c,s,v") {
+//         return "No es un Archivo de formato CSV"
+//     }
+// }
