@@ -4,7 +4,7 @@ class uploadService{
           constructor(){
            this.storage = Multer.diskStorage({
                 destination: (req, file, cb) => {
-                    cb(null, "public/archivo");
+                    cb(null, "public/files");
                 },
                 filename: (req, file, cb) => {
                     cb(null, file.originalname);

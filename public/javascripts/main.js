@@ -1,18 +1,8 @@
-// function getFormat(e) {
-//     console.log("HOLAAA");
+var regex = new RegExp("(.*?)\.(csv)$");
 
-//     var x = []
-//     var subir = $("file");
-
-//     for (var i = 0; i < subir.length; i++) {
-//         var caracter = subir.charAt(i)
-//         if (caracter === ".") {
-//             x = x + caracter;
-//             console.log(x)
-//         }
-//     }
-
-//     if (x !== "CSV" || x !== "c,s,v") {
-//         return "No es un Archivo de formato CSV"
-//     }
-// }
+function acceptCSV(data) {
+  if (!(regex.test(data.value.toLowerCase()))) {
+    data.value = '';
+    alert('Perdón, tiene que ser un documento de formato CSV');
+  }
+}
