@@ -3,6 +3,7 @@ var router = express.Router();
 let UploadService = require('../services/uploadService');
 let uploadService= new UploadService();
 let upload = uploadService.up()
+let CsvToJson = require('../services/csvToJsonService');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,7 +11,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/upload', upload.single('file'), (req, res, next) => {
-  console.log('file')
+  let csvToJson = new CsvToJson();
+  csvToJson.make(); //Llamamos a la funcion make
   res.json('file')
 })
 

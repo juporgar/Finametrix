@@ -1,11 +1,26 @@
-// const csvFilePath = './public/files'
-// const csv = require('csvtojson')
+var csv = require("fast-csv");
+let MakeJson = require("./makeJson");
 
-// csv()
-//     .fromFile(csvFilePath)
-//     .then((jsonObj) => {
-//         console.log(jsonObj);
-//     })
+class csvToJson {
+    constructor() {
+        this.objeto=[];
+        this.addarray=function(data){
+            this.objeto.push(data);
+        };
+      
+    }
 
-// // Async / await usage
-// const jsonArray =  csv().fromFile(csvFilePath);
+    make(){
+        let makeJson= new MakeJson();
+        csv
+        .fromPath("../finametrix/public/files/catalogo_20180710.csv",{delimiter:";", noheaders:true}) //Seleccionamos el archivo que vamos a mirar
+        .on("data", function (data) {
+          makeJson.addElement(data); //hacemos llamada a makeJson
+        })
+        .on("end", function () {
+        makeJson.makeObject(); //hacemos llamada a makeJson cuando finalice (es decir, cuando todo acaba)
+        });
+    }
+}
+
+module.exports = csvToJson;
