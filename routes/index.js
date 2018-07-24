@@ -12,8 +12,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/upload', upload.single('file'), (req, res, next) => {
   let csvToJson = new CsvToJson();
-  csvToJson.make(); //Llamamos a la funcion make
-  res.json('file')
+  csvToJson.make().then(data => {
+    res.json(data)
+  }).catch(error => {
+    res.json(error)
+  }); //Llamamos a la funcion make
 })
 
 module.exports = router;
