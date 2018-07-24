@@ -4,6 +4,8 @@ class makeJson {
         this.cabecera = [];
         this.cuerpo = [];
         this.fallo = [];
+        this.sumSubida = 0;
+        this.sumError = 0;
     }
 
     addElement(data) {
@@ -12,6 +14,7 @@ class makeJson {
         var precio = /^[0-9]+([,][0-9]+)?$/;
 
         if (data[0] == "VA") {
+            this.sumSubida ++;
             this.cabecera.push(data); //Los que son VA nos los guarda en la variable cabecera
         } else if(data[0] === 'VL') {
             let validFecha = data[2].match(fecha);
@@ -20,11 +23,13 @@ class makeJson {
             
             if(!validFecha || !validPrecio) {
                 this.fallo.push(data)
+                this.sumError ++;
             } else {
-                data[3] = parseFloat( data[3].replace(',','.') )
-                data[2] = parseFloat( data[2] )
+                data[3] = parseFloat( data[3].replace(',','.') ) //nos transdorma el precio a numero con .
+                data[2] = parseFloat( data[2] ) // nos tranforma fecha a numero
                 
                 this.cuerpo.push(data)
+                this.sumSubida ++;
             }
         } 
          else {
@@ -44,8 +49,10 @@ class makeJson {
             "cuerpo": this.cuerpo,
             errores: this.fallo
         }
-        console.log(this.fallo);
-        return objeto;
+        console.log(this.sumError);
+        console.log(this.sumSubida);
+        return "Has subido " + this.sumSubida + " datos "+ " y " + "has tenido " + this.sumError + " errores";
+        //return objeto;
     }
 }
 
