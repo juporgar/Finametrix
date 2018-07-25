@@ -4,6 +4,7 @@ let UploadService = require('../services/uploadService');
 let uploadService= new UploadService();
 let upload = uploadService.up()
 let CsvToJson = require('../services/csvToJsonService');
+let Calcu = require('../helpers/calcu');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,6 +18,12 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
   }).catch(error => {
     res.json(error)
   }); //Llamamos a la funcion make
+})
+
+router.get('/api/performance',function(req,res,next){
+  let calcu = new Calcu(req,res,next)
+  calcu.performance();
+  calcu.volatility();
 })
 
 module.exports = router;

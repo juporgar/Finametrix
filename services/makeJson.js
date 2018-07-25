@@ -6,6 +6,7 @@ class makeJson {
         this.fallo = [];
         this.sumSubida = 0;
         this.sumError = 0;
+        this.resultadoPerfor = 0;
     }
 
     addElement(data) {
@@ -49,9 +50,7 @@ class makeJson {
             "cuerpo": this.cuerpo,
             errores: this.fallo
         }
-        console.log(this.sumError);
-        console.log(this.sumSubida);
-        return "Has subido " + this.sumSubida + " datos "+ " y " + "has tenido " + this.sumError + " errores";
+        return "Has subido " + this.sumSubida + " datos y has tenido " + this.sumError + " errores.De los cuales son estos: " + this.fallo 
         //return objeto;
     }
 }
