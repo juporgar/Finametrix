@@ -9,14 +9,14 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/performance', function (req, res, next) {
-    // console.log(req.query.isin)
-    // console.log(req.query.dateFrom)
-    // console.log(req.query.dateTo)
-
+router.get('/performance', function (req, res, next) {    
     let calcu = new Calcu(req, res, next)
     calcu.performance();
     calcu.volatility();
+    
+    // console.log(req.query.isin)
+    // console.log(req.query.dateFrom)
+    // console.log(req.query.dateTo)
 })
 
 module.exports = router;
