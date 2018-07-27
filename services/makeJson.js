@@ -20,7 +20,7 @@ class makeJson {
 
         if (data[0] == "VA") {
             this.sumSubida++;
-            this.cabecera.push(data); //Los que son VA nos los guarda en la variable cabecera
+            this.cabecera.push(data);
 
             let vaModel = new Va({
                     isin: data[1],
@@ -29,37 +29,32 @@ class makeJson {
                     familia: data[4]
                 })
                 .save(err => {
-                    this.contadorVa ++
-                    if (err) console.error(err);
-                    console.log( this.contadorVa + " Almacenado el VA");
+                    this.contadorVa++
+                        if (err) console.error(err);
+                    console.log(this.contadorVa + " Almacenado el VA");
                 })
         } else if (data[0] === 'VL') {
             let validFecha = data[2].match(fecha);
             let validPrecio = data[3].match(precio);
-            //  console.log(validFecha, validPrecio, data);
 
             if (!validFecha || !validPrecio) {
                 this.fallo.push(data)
                 this.sumError++;
             } else {
-                data[3] = parseFloat(data[3].replace(',', '.')) //nos transdorma el precio a numero con .
-                data[2] = parseFloat(data[2]) // nos tranforma fecha a numero
-
                 this.cuerpo.push(data)
                 this.sumSubida++;
 
                 let vlModel = new Vl({
                         tipo: data[0],
                         isin: data[1],
-                        fecha: data[2],
-                        precio: data[3]
+                        fecha: parseInt(data[2]),
+                        precio: parseFloat(data[3].replace(',', '.'))
                     })
                     .save(err => {
                         if (err) console.error(err);
-                        this.contadorVl ++
-                        console.log(this.contadorVl + " Almacenado el VL");
+                        this.contadorVl++
+                            console.log(this.contadorVl + " Almacenado el VL");
                     })
-
             }
         } else {
             this.fallo.push(data)
@@ -67,20 +62,16 @@ class makeJson {
     }
 
     getObject() {
-        return this.cuerpo; //Nos muestra el cuerpo
+        return this.cuerpo;
     }
 
     makeObject() {
         let objeto = {
-            "cabecera": this.cabecera //Aqui nos muestras las cabeceras que tenemos (en este caso, nos muestra la 1 porque hemos puesto el 0 en el array)
-                ,
+            "cabecera": this.cabecera,
             "cuerpo": this.cuerpo,
             errores: this.fallo
         }
-
-
         return "Has subido " + this.sumSubida + " datos y has tenido " + this.sumError + " errores.De los cuales son estos: " + this.fallo
-        //return objeto;
     }
 }
 

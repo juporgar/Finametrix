@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let Calcu = require('../helpers/calcu');
+let ControladorBase = require('../controllers/api/controladorBase')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -9,14 +10,9 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/performance', function (req, res, next) {    
-    let calcu = new Calcu(req, res, next)
-    calcu.performance();
-    calcu.volatility();
-    
-    // console.log(req.query.isin)
-    // console.log(req.query.dateFrom)
-    // console.log(req.query.dateTo)
+router.get('/performance', function (req, res, next) {
+    let controladorBase = new ControladorBase(req, res, next)
+    controladorBase.compararBase()
 })
 
 module.exports = router;

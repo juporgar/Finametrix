@@ -3,7 +3,7 @@ const Mongoose = require('mongoose');
 let vlSchema = Mongoose.Schema({
     tipo: String,
     isin: String,
-    fecha: String,
+    fecha: Number,
     precio: Number
 });
 
