@@ -6,8 +6,10 @@ class makeJson {
         this.cabecera = [];
         this.cuerpo = [];
         this.fallo = [];
+        this.otros = [];
         this.sumSubida = 0;
         this.sumError = 0;
+        this.sumOtros = 0;
         this.resultadoPerfor = 0;
         this.contadorVa = 0;
         this.contadorVl = 0;
@@ -31,7 +33,6 @@ class makeJson {
                 .save(err => {
                     this.contadorVa++
                         if (err) console.error(err);
-                    console.log(this.contadorVa + " Almacenado el VA");
                 })
         } else if (data[0] === 'VL') {
             let validFecha = data[2].match(fecha);
@@ -53,7 +54,6 @@ class makeJson {
                     .save(err => {
                         if (err) console.error(err);
                         this.contadorVl++
-                            console.log(this.contadorVl + " Almacenado el VL");
                     })
             }
         } else {

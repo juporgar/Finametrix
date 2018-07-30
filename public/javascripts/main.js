@@ -6,3 +6,10 @@ function acceptCSV(data) {
     alert('Perdón, tiene que ser un documento de formato CSV');
   }
 }
+
+$(document).ready(function () {
+  $('#loading').hide();
+  $('form').submit(function () {
+    $('#loading').show();
+  });
+});
