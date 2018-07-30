@@ -9,4 +9,5 @@ quitando los datos con errores de formato que esta indicado en el codigo.
 
 Luego con Postman, hacemos peticiones de los datos que queremos calcular, poniendo el isin y las fechas (una de inicio y otra de fin).
 
-Y si todo sale bien, nos mostrará los resultados de Performance y Volatility. Si alguno de los datos que hemos puesto en la URL, no existen en la base de datos, no funcionará.
+Y si todo sale bien, nos mostrará los resultados de Performance y Volatility.
+Si alguno de los datos que hemos puesto en la URL, no existen en la base de datos, no funcionará.
