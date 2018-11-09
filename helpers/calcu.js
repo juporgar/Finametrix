@@ -24,7 +24,6 @@ class calcular {
 
     operation(isin, dateFrom, dateTo, data) {
 
-        
                 /*Performance */
 
                 if (data[0] && data[0].precio) {

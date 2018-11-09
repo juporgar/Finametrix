@@ -1,7 +1,6 @@
 const Multer = require('multer');
 const path = require('path');
 
-
 class uploadService {
     constructor() {
         this.storage = Multer.diskStorage({
