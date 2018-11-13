@@ -1,8 +1,7 @@
 # Desarrollado con:
 
-- Hbs
-- Js
-- Bower
+- JavaScript
+- NodeJs
 - MongoDB
 - Express
 
